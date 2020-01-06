@@ -26,10 +26,12 @@ export async function handle(request) {
     switch (ctx.payload.messageType) {
         // 文本
         case 'text':
-            return compose(textMessageHandlers)(ctx)
+            await compose(textMessageHandlers)(ctx)
+            break
         // 图片
         case 'image':
-            return compose(imageMessageHandlers)(ctx)
+            await compose(imageMessageHandlers)(ctx)
+            break
         default:
             ctx.text('怎么办呢？')
     }

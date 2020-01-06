@@ -1,3 +1,5 @@
+import ExpiryMap from 'expiry-map'
+
 // 1 hour
 const channel = new ExpiryMap(60 * 60 * 1000)
 
