@@ -1,5 +1,10 @@
 import crypto from 'crypto'
 
+import { buildContext } from './context'
+import compose from '../utils/compose'
+import textMessageHandlers from './handlers/text_handlers'
+import imageMessageHandlers from './handlers/image_handlers'
+
 const token = 'nano'
 
 export function hi(request) {
@@ -16,7 +21,17 @@ export function hi(request) {
     return ''
 }
 
-export function handle(request) {
-    console.table(request)
-    return request
+export async function handle(request) {
+    const ctx = buildContext(request)
+    switch (ctx.payload.messageType) {
+        // 文本
+        case 'text':
+            return compose(textMessageHandlers)(ctx)
+        // 图片
+        case 'image':
+            return compose(imageMessageHandlers)(ctx)
+        default:
+            ctx.text('怎么办呢？')
+    }
+    return ctx.reply()
 }
