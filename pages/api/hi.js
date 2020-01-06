@@ -5,5 +5,5 @@ export default async (req, res) => {
         res.send(await wiki(req.query['wiki']))
         return
     }
-    res.end('hi')
+    res.send('hi')
 }
