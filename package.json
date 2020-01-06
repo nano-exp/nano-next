@@ -1,0 +1,29 @@
+{
+  "name": "nano",
+  "version": "0.1.0",
+  "description": "WeChat bot named nano",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cbdyzj/nano.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cbdyzj/nano/issues"
+  },
+  "homepage": "https://github.com/cbdyzj/nano#readme",
+  "dependencies": {
+    "next": "^9.1.7",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
+}
