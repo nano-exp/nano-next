@@ -1,7 +1,7 @@
 import ExpiryMap from 'expiry-map'
 
-// 1 hour
-const channel = new ExpiryMap(60 * 60 * 1000)
+// 8 hours
+const channel = new ExpiryMap(8 * 60 * 60 * 1000)
 
 export function buildContext(request) {
     if (!request || !request.xml) {
