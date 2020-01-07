@@ -1,5 +1,6 @@
 {
   "env": {
-    "NANO_WX_TOKEN": "@wx-token"
+    "NANO_WX_TOKEN": "@wx-token",
+    "NANO_BAIDU_ACCESS_TOKEN": "@baidu-access-token"
   }
 }
