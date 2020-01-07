@@ -3,8 +3,8 @@ import crypto from 'crypto'
 import { WX_TOKEN } from '../secrets'
 import { buildContext } from './context'
 import compose from '../utils/compose'
-import textMessageHandlers from './handlers/text_handlers'
-import imageMessageHandlers from './handlers/image_handlers'
+import textMessageHandlers from './text_handlers'
+import imageMessageHandlers from './image_handlers'
 
 export function hi(request) {
     const { signature, echostr, timestamp, nonce } = request

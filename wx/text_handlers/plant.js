@@ -1,5 +1,5 @@
-import url2base64 from '../../../utils/url2base64'
-import { plantClient } from '../../baidu_service'
+import url2base64 from '../../utils/url2base64'
+import { plantClient } from '../../services/baidu'
 
 export const help = 'plant 植物识别'
 

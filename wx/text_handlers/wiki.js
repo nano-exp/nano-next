@@ -1,4 +1,4 @@
-import wikiExtracts from '../../../utils/wiki_extracts'
+import { wikiExtracts } from '../../services/wiki'
 
 export const help = 'wiki 查询维基百科词条'
 

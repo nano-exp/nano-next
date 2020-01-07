@@ -12,7 +12,7 @@ const handlers = [
     ...google,
     ...translate,
     ...plant,
-    ...iot
+    ...iot,
 ]
 
 // eventually

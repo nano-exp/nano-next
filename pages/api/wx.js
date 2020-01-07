@@ -1,5 +1,5 @@
 import { parseStringPromise, Builder } from 'xml2js'
-import { hi, handle } from '../../services/ws_service'
+import { hi, handle } from '../../wx'
 
 const xmlBuilder = new Builder({ cdata: true })
 
