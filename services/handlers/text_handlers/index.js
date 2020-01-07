@@ -36,7 +36,7 @@ handlers.push(async (ctx, next) => {
         const command = String(ctx.payload.content).split('.')
         if (!command[0] || !command[1]) {
             const message = '非法指令：' + ctx.payload.content
-                + '\n正确指令如：客厅灯.关闭'
+                + '\n正确指令如：客厅灯.关闭()'
             ctx.text(message)
             return
         }
