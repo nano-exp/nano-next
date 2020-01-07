@@ -36,6 +36,7 @@ handlers.push(async (ctx, next) => {
         const command = String(ctx.payload.content).split('.')
         if (!command[0] || command[1]) {
             ctx.text('非法指令：' + ctx.payload.content)
+            return
         }
         ctx.text('nano找到设备：' + command[0])
         return
