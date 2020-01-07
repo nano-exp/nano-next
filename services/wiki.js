@@ -42,7 +42,7 @@ export const wikiExtracts = useExpireCache(async function (title) {
             return 'nano没有找到：' + titles
         }
 
-        return ellipsis(wiki.extract) + '\n' + URL_PREFIX + encodingTitles
+        return ellipsis(wiki.extract) + '\n' + URL_PREFIX + encodedTitle
     } catch (error) {
         console.error(error)
         return 'nano请求wiki时遇到了异常'
