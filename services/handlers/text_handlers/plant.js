@@ -1,6 +1,8 @@
 import url2base64 from '../../../utils/url2base64'
 // const client = require('../../../baidu/plant_client')
 
+export const help = 'plant 植物识别'
+
 const handlers = []
 
 async function snap(pictureUrl) {
@@ -41,5 +43,4 @@ handlers.push(async (ctx, next) => {
     ctx.text(await snap(pictureUrl))
 })
 
-export const help = 'plant\t[图片地址]\t植物识别'
 export default handlers

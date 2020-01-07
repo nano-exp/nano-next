@@ -6,14 +6,14 @@ import plant, { help as plantHelp } from './plant'
 import iot, { help as iotHelp } from './iot'
 
 /* text handlers */
-const handlers = []
-
-handlers.push(...rules)
-handlers.push(...wiki)
-handlers.push(...google)
-handlers.push(...translate)
-handlers.push(...plant)
-handlers.push(...iot)
+const handlers = [
+    ...rules,
+    ...wiki,
+    ...google,
+    ...translate,
+    ...plant,
+    ...iot
+]
 
 // eventually
 handlers.push((ctx, next) => {

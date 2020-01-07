@@ -1,5 +1,7 @@
 import wikiExtracts from '../../../utils/wiki_extracts'
 
+export const help = 'wiki 查询维基百科词条'
+
 const handlers = []
 
 function parseOptions(parameters) {
@@ -45,5 +47,4 @@ handlers.push(async (ctx, next) => {
     ctx.text(wiki)
 })
 
-export const help = 'wiki\t[关键词]\t查询维基百科词条'
 export default handlers

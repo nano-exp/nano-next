@@ -1,0 +1,5 @@
+{
+  "env": {
+    "NANO_WX_TOKEN": "@wx-token"
+  }
+}

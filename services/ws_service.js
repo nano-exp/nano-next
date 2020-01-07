@@ -1,16 +1,15 @@
 import crypto from 'crypto'
 
+import { WX_TOKEN } from '../secrets'
 import { buildContext } from './context'
 import compose from '../utils/compose'
 import textMessageHandlers from './handlers/text_handlers'
 import imageMessageHandlers from './handlers/image_handlers'
 
-const token = process.env.WX_TOKEN || 'nano'
-
 export function hi(request) {
     const { signature, echostr, timestamp, nonce } = request
 
-    const joined = [token, timestamp, nonce].sort().join('')
+    const joined = [WX_TOKEN, timestamp, nonce].sort().join('')
     const digest = crypto.createHash('sha1')
         .update(joined)
         .digest('hex')

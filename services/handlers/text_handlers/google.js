@@ -1,3 +1,5 @@
+export const help = 'google Google搜索'
+
 const handlers = []
 
 handlers.push(async (ctx, next) => {
@@ -15,5 +17,4 @@ handlers.push(async (ctx, next) => {
     ctx.text(result)
 })
 
-export const help = 'google\t[关键词]\t使用Google搜索'
 export default handlers
