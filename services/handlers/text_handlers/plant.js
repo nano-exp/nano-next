@@ -41,5 +41,5 @@ handlers.push(async (ctx, next) => {
     ctx.text(await snap(pictureUrl))
 })
 
-export const help = 'plant [图片地址] 植物识别'
+export const help = 'plant\t[图片地址]\t植物识别'
 export default handlers

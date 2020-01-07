@@ -11,13 +11,14 @@ const handlers = []
 handlers.push(...rules)
 handlers.push(...wiki)
 handlers.push(...google)
+handlers.push(...translate)
 handlers.push(...plant)
 handlers.push(...iot)
 
 // eventually
 handlers.push((ctx, next) => {
     const help = [
-        '试试下列命令让nano帮你吧',
+        '试试下列命令让nano帮你吧\n',
         wikiHelp,
         googleHelp,
         translateHelp,

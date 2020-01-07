@@ -13,5 +13,5 @@ handlers.push(async (ctx, next) => {
     ctx.text('nano看不懂：' + content)
 })
 
-export const help = 'translate [关键词] 翻译文本'
+export const help = 'translate\t[关键词]\t翻译文本'
 export default handlers

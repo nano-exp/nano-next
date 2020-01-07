@@ -41,9 +41,9 @@ handlers.push(async (ctx, next) => {
         ctx.text(message)
         return
     }
-    const wiki = await wikiExtracts(ctx.payload.content)
+    const wiki = await wikiExtracts(options.keyword)
     ctx.text(wiki)
 })
 
-export const help = 'wiki [关键词] 查询维基百科词条'
+export const help = 'wiki\t[关键词]\t查询维基百科词条'
 export default handlers
