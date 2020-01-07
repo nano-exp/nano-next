@@ -20,7 +20,7 @@ const rules = [{
         content.push(channels.map(c => c.name).join('\n'))
         const currentChannel = ctx.channel.get(ctx.payload.fromUserName)
         if (currentChannel) {
-            content.push('当前频道：' + currentChannel)
+            content.push('\n当前频道：' + currentChannel)
         }
         return content.join('\n')
     }
