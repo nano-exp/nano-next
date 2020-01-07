@@ -14,7 +14,16 @@ const rules = [{
     reply: 'nano不支持这个消息类型哦',
 }, {
     pattern: /^nano?$/i,
-    reply: '试试输入下列关键词让nano帮助你吧：' + '\n' + channels.map(c => c.name).join('\n')
+    reply(ctx) {
+        const content = []
+        content.push('试试输入下列关键词让nano帮助你吧：')
+        content.push(channels.map(c => c.name).join('\n'))
+        const currentChannel = ctx.channel.get(ctx.payload.fromUserName)
+        if (currentChannel) {
+            content.push('当前频道：' + currentChannel)
+        }
+        return content.join('\n')
+    }
 }, {
     pattern: /^重置频道$/,
     reply(ctx) {
