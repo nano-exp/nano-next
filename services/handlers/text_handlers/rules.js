@@ -16,7 +16,7 @@ const rules = [{
     pattern: /^nano?$/i,
     reply(ctx) {
         const content = []
-        content.push('试试输入下列关键词让nano帮助你吧：')
+        content.push('输入下列关键词让nano帮助你吧：')
         content.push(channels.map(c => c.name).join('\n'))
         const currentChannel = ctx.channel.get(ctx.payload.fromUserName)
         if (currentChannel) {
