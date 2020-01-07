@@ -1,4 +1,4 @@
-export const help = 'google Google搜索'
+export const help = 'google 谷歌搜索'
 
 const handlers = []
 
