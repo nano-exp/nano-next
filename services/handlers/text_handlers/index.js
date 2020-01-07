@@ -35,9 +35,7 @@ handlers.push(async (ctx, next) => {
     if (ctx.channel.get(ctx.payload.fromUserName) === '智能家居') {
         const command = String(ctx.payload.content).split('.')
         if (!command[0] || !command[1]) {
-            const message = '非法指令：' + ctx.payload.content
-                + '\n正确指令如：客厅灯.关闭()'
-            ctx.text(message)
+            ctx.text('非法指令：' + ctx.payload.content)
             return
         }
         ctx.text('nano没有找到该设备：' + command[0])
