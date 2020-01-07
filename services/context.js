@@ -1,8 +1,3 @@
-import ExpiryMap from 'expiry-map'
-
-// 8 hours
-const channel = new ExpiryMap(8 * 60 * 60 * 1000)
-
 export function buildContext(request) {
     if (!request || !request.xml) {
         throw new Error('Illegal request')
@@ -28,7 +23,6 @@ export function buildContext(request) {
 
     return {
         payload,
-        channel,
         text(content) {
             internalContext.reply = {
                 xml: {

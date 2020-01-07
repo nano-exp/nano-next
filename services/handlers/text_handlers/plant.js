@@ -3,13 +3,9 @@ import url2base64 from '../../../utils/url2base64'
 
 const handlers = []
 
-// plant
-handlers.push(async (ctx, next) => {
-    if (ctx.channel.get(ctx.payload.fromUserName) !== '植物识别') {
-        return next()
-    }
+async function snap(pictureUrl) {
     try {
-        //     const image = await url2base64(ctx.payload.pictureUrl)
+        //     const image = await url2base64(pictureUrl)
         //     const result = await client(image)
         //     const primary = result.result[0]
         //     if (primary.name === '非植物') {
@@ -24,12 +20,26 @@ handlers.push(async (ctx, next) => {
         //     if (wikiInfo.baike_url) {
         //         info += '\n' + wikiInfo.baike_url
         //     }
-        //     ctx.text(info)
-        ctx.text('抱歉，植物识别维护中，暂时不可以用')
+        //     return info
+        return '抱歉，植物识别维护中，暂时不可以用'
     } catch (error) {
         console.error(error)
-        ctx.text('nano遇到了一些问题：' + error.message)
+        return 'nano遇到了一些问题：' + error.message
     }
+}
+
+handlers.push(async (ctx, next) => {
+    const context = ctx.payload.content || ''
+    if (!/^plant/i.test(context)) {
+        return next()
+    }
+    const pictureUrl = context.substring('plant'.length, context.length).trim()
+    if (!pictureUrl) {
+        ctx.text('图片地址缺失')
+        return
+    }
+    ctx.text(await snap(pictureUrl))
 })
 
+export const help = 'plant [图片地址] 植物识别'
 export default handlers

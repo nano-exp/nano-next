@@ -5,7 +5,7 @@ import compose from '../utils/compose'
 import textMessageHandlers from './handlers/text_handlers'
 import imageMessageHandlers from './handlers/image_handlers'
 
-const token = 'nano'
+const token = process.env.WX_TOKEN || 'nano'
 
 export function hi(request) {
     const { signature, echostr, timestamp, nonce } = request

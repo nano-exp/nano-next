@@ -1,52 +1,30 @@
-import channels from './channels'
 import rules from './rules'
-
-import wikiExtracts from '../../../utils/wiki_extracts'
+import wiki, { help as wikiHelp } from './wiki'
+import google, { help as googleHelp } from './google'
+import translate, { help as translateHelp } from './translate'
+import plant, { help as plantHelp } from './plant'
+import iot, { help as iotHelp } from './iot'
 
 /* text handlers */
 const handlers = []
 
-handlers.push(...channels)
 handlers.push(...rules)
+handlers.push(...wiki)
+handlers.push(...google)
+handlers.push(...plant)
+handlers.push(...iot)
 
-// wiki
-handlers.push(async (ctx, next) => {
-    if (ctx.channel.get(ctx.payload.fromUserName) === '维基百科') {
-        const wiki = await wikiExtracts(ctx.payload.content)
-        ctx.text(wiki)
-        return
-    }
-    return next()
-})
-
-// Google
-handlers.push(async (ctx, next) => {
-    if (ctx.channel.get(ctx.payload.fromUserName) === '谷歌搜索') {
-        const keywords = ctx.payload.content
-        let result = 'nano生成了搜索链接：' + keywords
-        result += '\n' + 'https://www.google.com/search?q=' + encodeURIComponent(keywords)
-        ctx.text(result)
-        return
-    }
-    return next()
-})
-
-handlers.push(async (ctx, next) => {
-    if (ctx.channel.get(ctx.payload.fromUserName) === '智能家居') {
-        const command = String(ctx.payload.content).split('.')
-        if (!command[0] || !command[1]) {
-            ctx.text('非法指令：' + ctx.payload.content)
-            return
-        }
-        ctx.text('nano没有找到该设备：' + command[0])
-        return
-    }
-    return next()
-})
-
-// echo eventually
+// eventually
 handlers.push((ctx, next) => {
-    ctx.text(ctx.payload.content)
+    const help = [
+        '试试下列命令让nano帮你吧',
+        wikiHelp,
+        googleHelp,
+        translateHelp,
+        plantHelp,
+        iotHelp,
+    ]
+    ctx.text(help.join('\n'))
 })
 
 export default handlers
