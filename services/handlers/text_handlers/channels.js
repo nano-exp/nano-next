@@ -7,6 +7,9 @@ export const channels = [{
 }, {
     name: '谷歌搜索',
     prompt: '谷歌反爬太厉害了，nano暂时不能帮你搜索',
+}, {
+    name: '智能家居',
+    prompt: 'nano帮你控制你的智能家居',
 }]
 
 function getChannel(name) {

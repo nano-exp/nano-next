@@ -4,7 +4,7 @@ import rules from './rules'
 import wikiExtracts from '../../../utils/wiki_extracts'
 
 /* text handlers */
-const handlers  = []
+const handlers = []
 
 handlers.push(...channels)
 handlers.push(...rules)
@@ -26,6 +26,18 @@ handlers.push(async (ctx, next) => {
         let result = 'nano生成了搜索链接：' + keywords
         result += '\n' + 'https://www.google.com/search?q=' + encodeURIComponent(keywords)
         ctx.text(result)
+        return
+    }
+    return next()
+})
+
+handlers.push(async (ctx, next) => {
+    if (ctx.channel.get(ctx.payload.fromUserName) === '智能家居') {
+        const command = String(ctx.payload.content).split('.')
+        if (!command[0] || command[1]) {
+            ctx.text('非法指令：' + ctx.payload.content)
+        }
+        ctx.text('nano找到设备：' + command[0])
         return
     }
     return next()
