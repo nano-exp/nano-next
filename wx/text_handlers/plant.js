@@ -9,6 +9,9 @@ async function snap(pictureUrl) {
     try {
         const image = await url2base64(pictureUrl)
         const result = await plantClient(image)
+        if (result.error_code) {
+            return '识别植物失败了：' + result.error_msg
+        }
         const primary = result.result[0]
         if (primary.name === '非植物') {
             return 'nano觉得这个不是植物哦'
