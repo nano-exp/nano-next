@@ -1,6 +1,6 @@
 import { wikiExtracts } from '../../services/wiki'
 
-export const help = 'wiki 查询维基百科词条'
+export const help = 'wiki 维基百科'
 
 const handlers = []
 

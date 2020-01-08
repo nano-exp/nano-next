@@ -1,4 +1,4 @@
-export const help = 'translate 翻译文本'
+export const help = 'translate 文本翻译'
 
 const handlers = []
 

@@ -11,7 +11,8 @@ async function snap(pictureUrl) {
         const image = await url2base64(pictureUrl)
         const result = await plantClient(image)
         if (result.error_code) {
-            refreshAccessTokenIfRequired(result.error_code)
+            // todo
+            // refreshAccessTokenIfRequired(result.error_code)
             return '识别植物失败了：' + result.error_msg
         }
         const primary = result.result[0]

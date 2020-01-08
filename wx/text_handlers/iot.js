@@ -1,4 +1,4 @@
-export const help = 'iot 控制智能设备'
+export const help = 'iot 智能家居'
 
 const handlers = []
 
