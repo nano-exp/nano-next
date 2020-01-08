@@ -39,7 +39,7 @@ export const wikiExtracts = useExpireCache(async function (title) {
 
         const wiki = Object.values(pages)[0]
         if (pages['-1'] || !wiki) {
-            return 'nano没有找到：' + titles
+            return 'nano没有找到：' + title
         }
 
         return ellipsis(wiki.extract) + '\n' + URL_PREFIX + encodedTitle
