@@ -1,7 +1,7 @@
 import qs from 'querystring'
 import axios from 'axios'
 
-import { BAIDU_ACCESS_TOKEN } from '../secrets'
+import { BAIDU_ACCESS_TOKEN } from '../../secrets'
 
 export async function plantClient(image) {
     const PLANT_API = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/plant?access_token='
