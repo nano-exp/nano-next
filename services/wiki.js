@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useExpireCache } from '../utils/cache_util'
 
-const QUERY_API = "https://zh.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=1&explaintext=true&exintro=true&redirects=true&titles=";
+const QUERY_API = "https://zh.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=1&explaintext=true&exintro=true&redirects=true&titles="
 const URL_PREFIX = 'https://zh.m.wikipedia.org/wiki/'
 
 const MAX_LENGTH = 320
