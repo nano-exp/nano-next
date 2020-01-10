@@ -41,7 +41,9 @@ export const wikiExtracts = useExpireCache(async function (title) {
         if (pages['-1'] || !wiki) {
             return 'nano没有找到：' + title
         }
-
+        if (!wiki.extract) {
+            return URL_PREFIX + encodedTitle
+        }
         return ellipsis(wiki.extract) + '\n' + URL_PREFIX + encodedTitle
     } catch (error) {
         console.error(error)
