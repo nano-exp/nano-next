@@ -9,7 +9,8 @@ function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div>nano</div>
-        </div>)
+        </div>
+    )
 }
 
 export default Home

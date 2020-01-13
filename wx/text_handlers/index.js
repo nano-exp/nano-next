@@ -1,7 +1,7 @@
 import rules from './rules'
 import wiki, { help as wikiHelp } from './wiki'
 import google, { help as googleHelp } from './google'
-import translate, { help as translateHelp } from './translate'
+import babel, { help as babelHelp } from './babel'
 import plant, { help as plantHelp } from './plant'
 import iot, { help as iotHelp } from './iot'
 
@@ -10,7 +10,7 @@ const handlers = [
     ...rules,
     ...wiki,
     ...google,
-    ...translate,
+    ...babel,
     ...plant,
     ...iot,
 ]
@@ -21,7 +21,7 @@ handlers.push((ctx, next) => {
         '试试下列命令让nano帮你吧\n',
         wikiHelp,
         googleHelp,
-        translateHelp,
+        babelHelp,
         plantHelp,
         iotHelp,
     ]
