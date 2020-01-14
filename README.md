@@ -2,8 +2,9 @@
 
 WeChat bot named nano
 
-## Install
+## Start
 
 ```sh
 yarn install --ignore-optional
+yarn start
 ```
