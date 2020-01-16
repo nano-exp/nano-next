@@ -1,6 +1,8 @@
 {
   "env": {
     "NANO_WX_TOKEN": "@wx-token",
-    "NANO_BAIDU_ACCESS_TOKEN": "@baidu-access-token"
+    "NANO_IMAGE_ACCESS_TOKEN": "@image-access-token",
+    "NANO_FANYI_APP_ID": "@fanyi-app-id",
+    "NANO_FANYI_SECRET_KEY": "@fanyi-secret-key"
   }
 }

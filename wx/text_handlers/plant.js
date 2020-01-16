@@ -1,6 +1,5 @@
 import url2base64 from '../../utils/url2base64'
 import { plantClient } from '../../services/baidu'
-import { refreshAccessTokenIfRequired } from '../../services/baidu/secret'
 
 export const help = 'plant 植物识别'
 

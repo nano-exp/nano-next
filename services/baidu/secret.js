@@ -1,6 +1,6 @@
 import qs from 'querystring'
 import axios from 'axios'
-import { BAIDU_API_KEY, BAIDU_SECRET_KEY } from '../../secrets'
+import { IMAGE_API_KEY, IMAGE_SECRET_KEY } from '../../secrets'
 
 /**
  * use api key and secret refresh access token
@@ -11,8 +11,8 @@ export function refreshAccessTokenIfRequired(errorCode) {
         return
     }
     const options = {
-        client_id: BAIDU_API_KEY,
-        client_secret: BAIDU_SECRET_KEY,
+        client_id: IMAGE_API_KEY,
+        client_secret: IMAGE_SECRET_KEY,
     }
     const ACCESS_TOKEN_API = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&'
 
