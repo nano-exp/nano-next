@@ -50,7 +50,7 @@ export async function translate({ content, from, to }) {
     }
     if (!response.data.trans_result) {
         console.error('翻译异常', response.data)
-        return '翻译异常' + response.data.error_msg || ''
+        return '翻译异常：' + response.data.error_msg || ''
     }
     if (!response.data.trans_result.length) {
         return ''
