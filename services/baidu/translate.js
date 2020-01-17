@@ -55,6 +55,6 @@ export async function translate({ content, from, to }) {
     if (!response.data.trans_result.length) {
         return ''
     }
-    const t = response.data.trans_result[0]
-    return t.dst
+    const results = response.data.trans_result
+    return results.map(it => it.dst).join('\n')
 }
