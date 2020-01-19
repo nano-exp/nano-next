@@ -6,16 +6,18 @@ import compose from '../utils/compose'
 import textMessageHandlers from './text_handlers'
 import imageMessageHandlers from './image_handlers'
 
-export function hi(request) {
-    const { signature, echostr, timestamp, nonce } = request
-
+export function verify(query) {
+    const { signature, timestamp, nonce } = query
     const joined = [WX_TOKEN, timestamp, nonce].sort().join('')
     const digest = crypto.createHash('sha1')
         .update(joined)
         .digest('hex')
+    return digest === signature
+}
 
-    if (digest === signature) {
-        return echostr
+export function hi(request) {
+    if(verify(request)){
+        return request.echostr
     }
     return ''
 }

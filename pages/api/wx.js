@@ -1,7 +1,11 @@
 import { parseStringPromise, Builder } from 'xml2js'
-import { hi, handle } from '../../wx'
+import { hi, handle, verify } from '../../wx'
 
 const xmlBuilder = new Builder({ cdata: true })
+
+function isProduction() {
+    return process.env.NODE_ENV === 'production'
+}
 
 export default async (req, res) => {
     try {
@@ -10,6 +14,9 @@ export default async (req, res) => {
                 res.send(hi(req.query))
                 break
             case 'POST':
+                if (isProduction() && !verify(req.query)) {
+                    break
+                }
                 const request = await parseStringPromise(req.body)
                 const reply = await handle(request)
                 res.setHeader('Content-Type', 'text/xml')
