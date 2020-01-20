@@ -12,21 +12,22 @@ export default async (req, res) => {
         switch (req.method) {
             case 'GET':
                 res.send(hi(req.query))
-                break
+                return
             case 'POST':
                 if (isProduction() && !verify(req.query)) {
-                    break
+                    res.status(400).send('Verified failed')
+                    return
                 }
                 const request = await parseStringPromise(req.body)
                 const reply = await handle(request)
                 res.setHeader('Content-Type', 'text/xml')
                 res.send(xmlBuilder.buildObject(reply))
-                break
+                return
             default:
                 res.send('')
         }
     } catch (error) {
         console.error(error)
-        res.status(400).send('')
+        res.status(400).send(error && error.message || '')
     }
 }

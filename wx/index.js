@@ -8,6 +8,11 @@ import imageMessageHandlers from './image_handlers'
 
 export function verify(query) {
     const { signature, timestamp, nonce } = query
+    const t = Number(timestamp)
+    const ct = Math.trunc(new Date().getTime() / 1000)
+    if (!t || Math.abs(ct - t) > 10) {
+        return false
+    }
     const joined = [WX_TOKEN, timestamp, nonce].sort().join('')
     const digest = crypto.createHash('sha1')
         .update(joined)
@@ -16,7 +21,7 @@ export function verify(query) {
 }
 
 export function hi(request) {
-    if(verify(request)){
+    if (verify(request)) {
         return request.echostr
     }
     return ''
