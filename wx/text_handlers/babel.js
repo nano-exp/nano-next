@@ -11,7 +11,6 @@ handlers.push(async (ctx, next) => {
     }
     const content = context.substring('babel'.length, context.length).trim()
 
-
     if (!content) {
         ctx.text('翻译内容缺失')
         return
