@@ -4,6 +4,11 @@ function isBase64String(s) {
     return /^[a-zA-Z0-9+\/]+={0,2}$/.test(s)
 }
 
+function hasInvalidCharacter(s = '') {
+    const regex = /[\0-\x08\x0B\f\x0E-\x1F\uFFFE\uFFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/
+    return !!s.match(regex)
+}
+
 const handlers = []
 
 handlers.push(async (ctx, next) => {
@@ -21,9 +26,11 @@ handlers.push(async (ctx, next) => {
     let result
     if (isBase64String(content)) {
         result = Buffer.from(content, 'base64').toString('utf8')
-    } else {
+    }
+    if (!result || hasInvalidCharacter(result)) {
         result = Buffer.from(content, 'utf8').toString('base64')
     }
+
     ctx.text(result || '编码内容缺失')
 })
 
