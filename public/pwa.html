@@ -15,8 +15,8 @@
 </body>
 <script>
     if (navigator.serviceWorker) {
-        ;(function () {
-            const registration = navigator.serviceWorker.register('/sw.js')
+        ;(async function () {
+            const registration = await navigator.serviceWorker.register('/sw.js')
             console.log('Registered events at scope: ', registration.scope);
         })()
     }

@@ -14,9 +14,9 @@ self.addEventListener('install', ev => {
     )
 })
 
-self.addEventListener('fetch', function(ev) {
+self.addEventListener('fetch', function (ev) {
     ev.respondWith(
-        caches.match(ev.request).then(function(response) {
+        caches.match(ev.request).then(function (response) {
             if (response != null) {
                 return response
             }
@@ -25,17 +25,15 @@ self.addEventListener('fetch', function(ev) {
     )
 })
 
-self.addEventListener('activate', function(e) {
-    e.waitUntil(
-        Promise.all(
-            caches.keys().then(cacheNames => {
-                return cacheNames.map(name => {
-                    if (name !== cacheStorageKey) {
-                        return caches.delete(name)
-                    }
-                })
-            })
-        ).then(() => {
+self.addEventListener('activate', function (ev) {
+    ev.waitUntil(
+        caches.keys().then(cacheNames => {
+            return Promise.all(cacheNames.map(name => {
+                if (name !== cacheStorageKey) {
+                    return caches.delete(name)
+                }
+            }))
+        }).then(() => {
             return self.clients.claim()
         })
     )
