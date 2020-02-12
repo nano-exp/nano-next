@@ -3,8 +3,8 @@
   "short_name": "nano",
   "display": "standalone",
   "start_url": "/",
-  "theme_color": "#8888ff",
-  "background_color": "#aaaaff",
+  "theme_color": "#C2C2C2",
+  "background_color": "#FFFFFF",
   "icons": [
     {
       "src": "icon.png",
