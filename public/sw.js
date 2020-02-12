@@ -3,38 +3,35 @@ const cacheStorageKey = 'nano-pwa'
 const cacheList = [
     '/',
     'pwa.html',
-    "icon.png"
+    'icon.png'
 ]
 
 self.addEventListener('install', ev => {
-    ev.waitUntil(
-        caches.open(cacheStorageKey)
-            .then(cache => cache.addAll(cacheList))
-            .then(() => self.skipWaiting())
-    )
+    ev.waitUntil((async () => {
+        const cache = await caches.open(cacheStorageKey)
+        await cache.addAll(cacheList)
+        await self.skipWaiting()
+    })())
 })
 
 self.addEventListener('fetch', function (ev) {
-    ev.respondWith(
-        caches.match(ev.request).then(function (response) {
-            if (response != null) {
-                return response
-            }
-            return fetch(ev.request.url)
-        })
-    )
+    ev.respondWith((async () => {
+        const response = await caches.match(ev.request)
+        if (response) {
+            return response
+        }
+        return fetch(ev.request.url)
+    })())
 })
 
 self.addEventListener('activate', function (ev) {
-    ev.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(cacheNames.map(name => {
-                if (name !== cacheStorageKey) {
-                    return caches.delete(name)
-                }
-            }))
-        }).then(() => {
-            return self.clients.claim()
-        })
-    )
+    ev.waitUntil((async () => {
+        const cacheNames = await caches.keys()
+        await Promise.all(cacheNames.map(name => {
+            if (name !== cacheStorageKey) {
+                return caches.delete(name)
+            }
+        }))
+        await self.clients.claim()
+    })())
 })
