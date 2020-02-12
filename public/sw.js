@@ -1,9 +1,12 @@
-const cacheStorageKey = 'nano-pwa'
+const pwaVersion = '0.1.0'
+
+const cacheStorageKey = `nano-pwa-${pwaVersion}`
 
 const cacheList = [
     '/',
     'pwa.html',
-    'icon.png'
+    'icon.png',
+    'favicon.ico',
 ]
 
 self.addEventListener('install', ev => {
