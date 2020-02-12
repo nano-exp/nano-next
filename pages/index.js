@@ -1,16 +1,11 @@
-import React from 'react'
-import Head from 'next/head'
+import indexHtml from '../public/index.html'
 
 function Home() {
-    return (
-        <div>
-            <Head>
-                <title>nano</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <div>nano</div>
-        </div>
-    )
+}
+
+Home.getInitialProps = ({ req, res }) => {
+    res.setHeader('content-type', 'text/html')
+    res.end(indexHtml)
 }
 
 export default Home

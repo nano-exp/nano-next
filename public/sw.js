@@ -4,7 +4,6 @@ const cacheStorageKey = `nano-pwa-${pwaVersion}`
 
 const cacheList = [
     '/',
-    'pwa.html',
     'icon.png',
     'favicon.ico',
 ]
