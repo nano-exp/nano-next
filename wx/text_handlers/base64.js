@@ -30,12 +30,12 @@ handlers.push(async (ctx, next) => {
 
     if (decodeFlag) {
         if (!isBase64String(content)) {
-            ctx.text('非法编码')
+            ctx.text('非法Base64编码')
             return
         }
         const result = Buffer.from(content, 'base64').toString('utf8')
         if (hasInvalidCharacter(result)) {
-            ctx.text('非法Base64编码')
+            ctx.text('解码Base64编码失败')
             return
         }
         ctx.text(result || '编码内容缺失')
