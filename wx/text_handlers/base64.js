@@ -16,21 +16,33 @@ handlers.push(async (ctx, next) => {
     if (!/^base64/i.test(context)) {
         return next()
     }
-    const content = context.substring('base64'.length, context.length).trim()
+    let content = context.substring('base64'.length, context.length).trim()
+    let decodeFlag = false
+    if (content.startsWith('-d')) {
+        decodeFlag = true
+        content = context.substring('-d'.length, context.length).trim()
+    }
 
     if (!content) {
         ctx.text('编码内容缺失')
         return
     }
 
-    let result
-    if (isBase64String(content)) {
-        result = Buffer.from(content, 'base64').toString('utf8')
-    }
-    if (!result || hasInvalidCharacter(result)) {
-        result = Buffer.from(content, 'utf8').toString('base64')
+    if (decodeFlag) {
+        if (!isBase64String(content)) {
+            ctx.text('非法编码')
+            return
+        }
+        const result = Buffer.from(content, 'base64').toString('utf8')
+        if (hasInvalidCharacter(result)) {
+            ctx.text('非法Base64编码')
+            return
+        }
+        ctx.text(result || '编码内容缺失')
+        return
     }
 
+    const result = Buffer.from(content, 'utf8').toString('base64')
     ctx.text(result || '编码内容缺失')
 })
 
