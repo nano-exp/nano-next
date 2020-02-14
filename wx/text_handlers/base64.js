@@ -20,7 +20,7 @@ handlers.push(async (ctx, next) => {
     let decodeFlag = false
     if (content.startsWith('-d')) {
         decodeFlag = true
-        content = context.substring('-d'.length, context.length).trim()
+        content = content.substring('-d'.length, context.length).trim()
     }
 
     if (!content) {
