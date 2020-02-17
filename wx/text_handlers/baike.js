@@ -6,11 +6,11 @@ const handlers = []
 
 async function fetchDescription(url) {
     const response = await axios.get(url)
-    if(!response.data){
+    if (!response.data) {
         return ''
     }
-    const matchResult  = /<meta name="description" content="(.+)">/.exec(response.data)
-    if(!matchResult){
+    const matchResult = /<meta name="description" content="(.+)">/.exec(response.data)
+    if (!matchResult) {
         return ''
     }
     return matchResult[1]
@@ -31,7 +31,10 @@ handlers.push(async (ctx, next) => {
 
     const baikrUrl = 'https://baike.baidu.com/item/' + encodeURIComponent(content)
     const description = await fetchDescription(baikrUrl)
-
+    if (!description) {
+        ctx.text('nano没有找到：' + content)
+        return
+    }
     ctx.text(description + '\n' + baikrUrl)
 })
 
