@@ -1,6 +1,21 @@
+import axios from 'axios'
+
 export const help = 'baike 百度百科'
 
 const handlers = []
+
+async function fetchDescription(url) {
+    const response = await axios.get(url)
+    if(!response.data){
+        return ''
+    }
+    const matchResult  = /<meta name="description" content="(.+)">/.exec(response.data)
+    if(!matchResult){
+        return ''
+    }
+    return matchResult[1]
+}
+
 
 handlers.push(async (ctx, next) => {
     const context = ctx.payload.content || ''
@@ -13,12 +28,11 @@ handlers.push(async (ctx, next) => {
         ctx.text('关键词缺失')
         return
     }
-    const description = ''
 
-    const result = description
-        + 'https://baike.baidu.com/item/'
-        + encodeURIComponent(content)
-    ctx.text(result)
+    const baikrUrl = 'https://baike.baidu.com/item/' + encodeURIComponent(content)
+    const description = await fetchDescription(baikrUrl)
+
+    ctx.text(description + '\n' + baikrUrl)
 })
 
 export default handlers
