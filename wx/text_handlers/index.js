@@ -5,6 +5,7 @@ import babel, { help as babelHelp } from './babel'
 import plant, { help as plantHelp } from './plant'
 import iot, { help as iotHelp } from './iot'
 import base64, { help as base64Help } from './base64'
+import eval, { help as evalHelp } from './eval'
 
 /* text handlers */
 const handlers = [
@@ -15,6 +16,7 @@ const handlers = [
     ...babel,
     ...plant,
     ...iot,
+    ...eval,
 ]
 
 // eventually
@@ -27,6 +29,7 @@ handlers.push((ctx, next) => {
         babelHelp,
         plantHelp,
         iotHelp,
+        evalHelp,
     ]
     ctx.text(help.join('\n'))
 })
