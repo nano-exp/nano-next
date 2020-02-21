@@ -16,7 +16,7 @@ function doEval(expression) {
 
 handlers.push(async (ctx, next) => {
     const context = ctx.payload.content || ''
-    if (!/^eval/i.test(context)) {
+    if (!(/^eval /i).test(context)) {
         return next()
     }
     const content = context.substring('eval'.length, context.length).trim()

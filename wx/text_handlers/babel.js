@@ -6,7 +6,7 @@ const handlers = []
 
 handlers.push(async (ctx, next) => {
     const context = ctx.payload.content || ''
-    if (!/^babel/i.test(context)) {
+    if (!(/^babel /i).test(context)) {
         return next()
     }
     const content = context.substring('babel'.length, context.length).trim()

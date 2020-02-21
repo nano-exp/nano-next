@@ -4,7 +4,7 @@ const handlers = []
 
 handlers.push(async (ctx, next) => {
     const context = ctx.payload.content || ''
-    if (!/^iot/i.test(context)) {
+    if (!(/^iot /i).test(context)) {
         return next()
     }
     const command = context.substring('iot'.length, context.length).trim()

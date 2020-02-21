@@ -13,22 +13,23 @@ const handlers = []
 
 handlers.push(async (ctx, next) => {
     const context = ctx.payload.content || ''
-    if (!/^base64/i.test(context)) {
+    if (!(/^base64d? /i).test(context)) {
         return next()
     }
-    let content = context.substring('base64'.length, context.length).trim()
-    let decodeFlag = false
-    if (content.startsWith('-d')) {
-        decodeFlag = true
-        content = content.substring('-d'.length, context.length).trim()
+    let command
+    if (/^base64d /i.test(context)) {
+        command = 'base64d'
+    } else {
+        command = 'base64'
     }
+    let content = context.substring(command.length, context.length).trim()
 
     if (!content) {
         ctx.text('编码内容缺失')
         return
     }
 
-    if (decodeFlag) {
+    if (command === 'base64d') {
         if (!isBase64String(content)) {
             ctx.text('非法Base64编码')
             return

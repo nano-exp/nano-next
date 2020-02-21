@@ -32,7 +32,7 @@ function checkOptions(options) {
 
 handlers.push(async (ctx, next) => {
     const context = ctx.payload.content || ''
-    if (!/^wiki/i.test(context)) {
+    if (!(/^wiki /i).test(context)) {
         return next()
     }
     const parameters = context.substring('wiki'.length, context.length)

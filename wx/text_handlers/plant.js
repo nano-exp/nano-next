@@ -34,7 +34,7 @@ async function snap(pictureUrl) {
 
 handlers.push(async (ctx, next) => {
     const context = ctx.payload.content || ''
-    if (!/^plant/i.test(context)) {
+    if (!(/^plant /i).test(context)) {
         return next()
     }
     const pictureUrl = context.substring('plant'.length, context.length).trim()

@@ -19,7 +19,7 @@ async function fetchDescription(url) {
 
 handlers.push(async (ctx, next) => {
     const context = ctx.payload.content || ''
-    if (!/^baike/i.test(context)) {
+    if (!(/^baike /i).test(context)) {
         return next()
     }
     const content = context.substring('baike'.length, context.length).trim()

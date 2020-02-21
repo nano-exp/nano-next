@@ -4,7 +4,7 @@ const handlers = []
 
 handlers.push(async (ctx, next) => {
     const context = ctx.payload.content || ''
-    if (!/^google/i.test(context)) {
+    if (!(/^google /i).test(context)) {
         return next()
     }
     const keywords = context.substring('google'.length, context.length).trim()
