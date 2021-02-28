@@ -1,7 +1,7 @@
 import qs from 'querystring'
 import axios from 'axios'
 
-import { IMAGE_ACCESS_TOKEN } from '../../secrets'
+const IMAGE_ACCESS_TOKEN = ''
 
 const PLANT_API = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/plant?access_token='
 

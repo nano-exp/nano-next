@@ -1,7 +1,7 @@
 {
   "name": "nano",
   "version": "0.1.0",
-  "description": "WeChat bot named nano",
+  "description": "nano",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -25,7 +25,6 @@
   "dependencies": {
     "axios": "^0.21.1",
     "next": "^10.0.7",
-    "raw-loader": "^4.0.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "xml2js": "^0.4.23"
