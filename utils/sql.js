@@ -5,14 +5,10 @@ const COMMON_SQL_KEYWORDS = [
     'BY', 'LEFT', 'GROUP'
 ]
 
-/**
- * 常见SQL的关键词大写
- */
 export function sqlKeywordsToUpperCase(sql) {
     if (!sql) {
         return ''
     }
-    let wordStart = 0
     sql = sql.replace(/\s/g, ' ')
     while (sql.includes('  ')) {
         sql = sql.replace('  ', ' ')
