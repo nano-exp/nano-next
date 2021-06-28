@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 const QUERY_API = "https://zh.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=1&explaintext=true&exintro=true&redirects=true&titles="
 const URL_PREFIX = 'https://zh.m.wikipedia.org/wiki/'
 
@@ -32,9 +30,9 @@ function ellipsis(longString = '') {
 export const wikiExtracts = async function (title) {
     try {
         const encodedTitle = encodeURIComponent(title)
-        const response = await axios.get(QUERY_API + encodedTitle)
-
-        const pages = response.data.query.pages
+        const response = await fetch(QUERY_API + encodedTitle)
+        const data = await response.json()
+        const pages = data.query.pages
 
         const wiki = Object.values(pages)[0]
         if (pages['-1'] || !wiki) {

@@ -1,4 +1,3 @@
-import axios from 'axios'
 import qs from "querystring"
 import crypto from 'crypto'
 import { containsChinese } from '../../utils/i18n'
@@ -30,7 +29,7 @@ export async function translate({ content, from, to }) {
         .update(FANYI_APP_ID + content + salt + FANYI_SECRET_KEY, 'utf8')
         .digest('hex')
 
-    const response = await axios.request({
+    const response = await fetch({
         url: FANYI_API,
         method: 'POST',
         headers: {
@@ -45,16 +44,17 @@ export async function translate({ content, from, to }) {
             sign,
         }),
     })
-    if (!response.data) {
+    const data = await response.json()
+    if (!data) {
         return '翻译结果为空'
     }
-    if (!response.data.trans_result) {
+    if (!data.trans_result) {
         console.error('翻译异常', response.data)
         return '翻译异常：' + response.data.error_msg || ''
     }
-    if (!response.data.trans_result.length) {
+    if (!data.trans_result.length) {
         return ''
     }
-    const results = response.data.trans_result
+    const results = data.trans_result
     return results.map(it => it.dst).join('\n')
 }

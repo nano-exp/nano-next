@@ -1,12 +1,11 @@
 import qs from 'querystring'
-import axios from 'axios'
 
 const IMAGE_ACCESS_TOKEN = ''
 
 const PLANT_API = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/plant?access_token='
 
 export async function plantClient(image) {
-    const response = await axios.request({
+    const response = await fetch({
         url: PLANT_API + IMAGE_ACCESS_TOKEN,
         method: 'POST',
         headers: {
@@ -16,5 +15,5 @@ export async function plantClient(image) {
             image, baike_num: 1
         }),
     })
-    return response.data
+    return await response.json()
 }

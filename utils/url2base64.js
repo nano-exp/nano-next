@@ -1,10 +1,8 @@
-import axios from 'axios'
-
 export default async function url2base64(url) {
-    const response = await axios.request({
+    const response = await fetch({
         url: new URL(url).toString(),
         method: 'GET',
-        responseType: 'arraybuffer'
     })
-    return Buffer.from(response.data, 'binary').toString('base64')
+    const data = await response.arrayBuffer()
+    return Buffer.from(data, 'binary').toString('base64')
 }

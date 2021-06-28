@@ -7,10 +7,6 @@
     "build": "next build",
     "start": "next start"
   },
-  "engines": {
-    "node": ">=12",
-    "yarn": ">=1.22"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cbdyzj/nano.git"
@@ -23,7 +19,6 @@
   },
   "homepage": "https://github.com/cbdyzj/nano#readme",
   "dependencies": {
-    "axios": "^0.21.1",
     "next": "^11.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

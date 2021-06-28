@@ -1,15 +1,14 @@
-import axios from 'axios'
-
 export const help = 'baike 百度百科'
 
 const handlers = []
 
 async function fetchDescription(url) {
-    const response = await axios.get(url)
-    if (!response.data) {
+    const response = await fetch(url)
+    const data = await response.text()
+    if (!data) {
         return ''
     }
-    const matchResult = /<meta name="description" content="(.+)">/.exec(response.data)
+    const matchResult = /<meta name="description" content="(.+)">/.exec(data)
     if (!matchResult) {
         return ''
     }
