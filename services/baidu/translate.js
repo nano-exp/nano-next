@@ -29,8 +29,7 @@ export async function translate({ content, from, to }) {
         .update(FANYI_APP_ID + content + salt + FANYI_SECRET_KEY, 'utf8')
         .digest('hex')
 
-    const response = await fetch({
-        url: FANYI_API,
+    const response = await fetch(FANYI_API, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'

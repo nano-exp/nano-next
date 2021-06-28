@@ -5,8 +5,7 @@ const IMAGE_ACCESS_TOKEN = ''
 const PLANT_API = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/plant?access_token='
 
 export async function plantClient(image) {
-    const response = await fetch({
-        url: PLANT_API + IMAGE_ACCESS_TOKEN,
+    const response = await fetch(PLANT_API + IMAGE_ACCESS_TOKEN, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
