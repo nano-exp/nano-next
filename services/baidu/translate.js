@@ -30,6 +30,9 @@ export async function translate({ content, from, to }) {
 
     const response = await fetch(FANYI_API, {
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
         data: new URLSearchParams({
             q: content,
             appid: FANYI_APP_ID,
@@ -40,12 +43,13 @@ export async function translate({ content, from, to }) {
         }),
     })
     const data = await response.json()
+    console.log(data)
     if (!data) {
         return '翻译结果为空'
     }
     if (!data.trans_result) {
-        console.error('翻译异常', response.data)
-        return '翻译异常：' + response.data.error_msg || ''
+        console.error('翻译异常', data)
+        return '翻译异常：' + data.error_msg || ''
     }
     if (!data.trans_result.length) {
         return ''
