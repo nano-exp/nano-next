@@ -43,7 +43,6 @@ export async function translate({ content, from, to }) {
         }),
     })
     const data = await response.json()
-    console.log(data)
     if (!data) {
         return '翻译结果为空'
     }
