@@ -1,4 +1,3 @@
-import qs from "querystring"
 import crypto from 'crypto'
 import { containsChinese } from '../../utils/i18n'
 import { FANYI_APP_ID, FANYI_SECRET_KEY } from '../../secrets'
@@ -31,10 +30,7 @@ export async function translate({ content, from, to }) {
 
     const response = await fetch(FANYI_API, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        data: qs.stringify({
+        data: new URLSearchParams({
             q: content,
             appid: FANYI_APP_ID,
             salt,

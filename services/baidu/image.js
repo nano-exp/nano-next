@@ -1,5 +1,3 @@
-import qs from 'querystring'
-
 const IMAGE_ACCESS_TOKEN = ''
 
 const PLANT_API = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/plant?access_token='
@@ -10,7 +8,7 @@ export async function plantClient(image) {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        data: qs.stringify({
+        data: new URLSearchParams({
             image, baike_num: 1
         }),
     })
