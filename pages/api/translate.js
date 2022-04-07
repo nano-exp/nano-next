@@ -1,4 +1,4 @@
-const API = 'https://natrium.herokuapp.com/api/baidu/translate'
+const API = 'https://nanometer.herokuapp.com/api/baidu/translate'
 
 export default async function (req, res) {
     try {
