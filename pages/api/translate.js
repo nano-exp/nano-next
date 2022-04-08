@@ -1,6 +1,6 @@
 const API = 'https://nanometer.herokuapp.com/api/baidu/translate'
 
-export default async function (req, res) {
+export default async function translate(req, res) {
     try {
         const q = new URLSearchParams(req.query)
         const response = await fetch(`${API}?${q.toString()}`, {

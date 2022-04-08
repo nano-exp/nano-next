@@ -7,7 +7,7 @@ function isProduction() {
     return process.env.NODE_ENV === 'production'
 }
 
-export default async function (req, res) {
+export default async function wx(req, res) {
     try {
         switch (req.method) {
             case 'GET':
