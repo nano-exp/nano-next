@@ -1,3 +1,3 @@
 # nano
 
-- https://nano.jianzhao.org/
+- https://nano-next.jianzhao.org/
